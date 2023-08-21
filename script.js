@@ -6,6 +6,16 @@ loop.onclick = () => {
   form.classList.add("d-flex");
   form.classList.add("form-animation");
 };
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((entry) => {
+    console.log(entry);
+    if (entry.isIntersecting) {
+      entry.target.classList.add("show");
+    }
+  });
+});
+const hiddenElements = document.querySelectorAll(".hidden");
+hiddenElements.forEach((el) => observer.observe(el));
 
 var elem = document.querySelector(".grid");
 var msnry = new Masonry(elem, {
